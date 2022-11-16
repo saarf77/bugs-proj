@@ -7,7 +7,9 @@ const userService = require('./services/user.service')
 
 
 const app = express();
-const PORT = 3030;
+// const PORT = 3030;
+
+const PORT = process.env.PORT || 3030
 
 app.use(express.static('public'));
 app.use(cookieParser());
@@ -63,7 +65,7 @@ app.get('/api/user-list', (req, res) => {
      .catch((err) => {
         console.log('OOPS:', err)
         res.status(400).send('Cannot load users')
-     })
+      })
 })
 
 
@@ -81,7 +83,7 @@ app.post('/api/bug', (req, res) => {
     createdAt: +req.body.createdAt,
     owner: loggedinUser
   };
-
+  
   bugService.save(bug).then((savedBug) => res.status(201).send(savedBug));
 });
 
@@ -93,7 +95,7 @@ app.put('/api/bug/:bugId', (req, res) => {
     if (!loggedinUser) return res.status(401).send('Cannot update car')
     if(loggedinUser.fullname !== req.body.owner.fullname && loggedinUser._id !== req.body.owner._id) return res.status(401).send('Cannot update bug')
  }
-  const { bugId } = req.params;
+ const { bugId } = req.params;
   const bug = {
     _id: bugId,
     title: req.body.title,
@@ -106,11 +108,11 @@ app.put('/api/bug/:bugId', (req, res) => {
     .save(bug)
     .then((updatedBug) => res.status(201).send(updatedBug))
     .catch((msg) => res.status(400).send(msg));
+    
+  });
 
-});
-
-
-// delete
+  
+  // delete
 app.delete('/api/bug/:bugId', (req, res) => {
   const loggedinUser = userService.validateToken(req.cookies.loginToken)
   if (!loggedinUser) return res.status(401).send('Cannot remove bug')
@@ -177,6 +179,7 @@ app.post('/api/auth/logout', (req, res) => {
 
 
 
+app.listen(PORT, () => console.log(`Server ready at port: ${PORT}!`))
 
 
-app.listen(PORT, () => console.log('Server ready at port 3030!'));
+// app.listen(PORT, () => console.log('Server ready at port 3030!'));
