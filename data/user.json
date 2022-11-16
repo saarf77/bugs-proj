@@ -1,0 +1,18 @@
+[
+  {
+    "username": "guli",
+    "password": "buli",
+    "fullname": "Guli Yat",
+    "_id": "Vv58l",
+    "bugCount": 1
+  },
+  {
+    "fullname": "Puki Ga",
+    "username": "puki",
+    "password": "secret",
+    "_id": "zQuW7",
+    "isAdmin": true,
+    "bugCount": 1
+
+  }
+]
