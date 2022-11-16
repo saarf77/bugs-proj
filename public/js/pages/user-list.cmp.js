@@ -44,9 +44,8 @@ export default {
                 })
         },
         removeUser(userId) {
-            let idx = this.users.findIndx( user=>)
-            if () {
-                
+            const idx = this.users.findIndex( user=> user._id === userId)
+            if (this.users[idx].bugCount === 0) {
                 userService.removeUser(userId).then(() => this.loadUsers())
             }
         },

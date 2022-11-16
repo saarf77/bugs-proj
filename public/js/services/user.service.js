@@ -72,9 +72,7 @@ function query(filterBy) {
   }
 
 function removeUser(userId) {
-    let isBugs = this.users.map(user => {
-        if(user.bugCount === 0)
-    } )
+    let isBugs
       this.filterBy
     return axios.delete(BASE_URL + userId ).then(res => res.data)
   }
