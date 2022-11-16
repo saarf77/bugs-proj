@@ -1,5 +1,11 @@
 [
   {
+    "username": "baba",
+    "password": "1234",
+    "fullname": "baba",
+    "_id": "WM4UO"
+  },
+  {
     "username": "guli",
     "password": "buli",
     "fullname": "Guli Yat",
@@ -13,6 +19,5 @@
     "_id": "zQuW7",
     "isAdmin": true,
     "bugCount": 1
-
   }
 ]
